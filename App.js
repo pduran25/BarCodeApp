@@ -23,7 +23,29 @@ export default function App() {
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
     setText(data)
+   // actualizarCodigo(data);
+
     console.log('Type: ' + type + '\nData: ' + data)
+  };
+
+  const actualizarCodigo = async () => {
+      try {
+        let str = text;
+        var valor = str.replace("https://malldelsol-gift.netlify.app/?codigo=", "");
+        if(valor.length > 2 ){
+          valor = str.replace("https://malldelsol-gift.netlify.app?codigo=", "");
+        }
+
+          const response = await fetch(
+             "https://globaltec.ec/app_malldelsol/setactivo.php?clave=@RUBIK2022&codigo="+valor
+           );
+           const jsonResponse= await response.json();
+           setText("Código enviado con éxito");
+           setScanned(false);
+      } catch (error) {
+        console.log("un error cachado Data saldopedIENTEEE");
+        console.log("ERROR CACHADO " + error);
+      }
   };
 
   // Check permissions and return the screens
@@ -51,7 +73,7 @@ export default function App() {
       </View>
       <Text style={styles.maintext}>{text}</Text>
 
-      {scanned && <Button title={'Scan again?'} onPress={() => setScanned(false)} color='tomato' />}
+      {scanned && <Button title={'Enviar Codigo'} onPress={() => actualizarCodigo()} color='tomato' />}
     </View>
   );
 }
