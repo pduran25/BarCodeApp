@@ -31,9 +31,9 @@ export default function App() {
   const actualizarCodigo = async () => {
       try {
         let str = text;
-        var valor = str.replace("https://malldelsol-gift.netlify.app/?codigo=", "");
+        var valor = str.replace("https://malldelsol-landing.netlify.app/?codigo=", "");
         if(valor.length > 2 ){
-          valor = str.replace("https://malldelsol-gift.netlify.app?codigo=", "");
+          valor = str.replace("https://malldelsol-landing.netlify.app?codigo=", "");
         }
 
           const response = await fetch(
