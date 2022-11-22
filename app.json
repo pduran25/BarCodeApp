@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "BarCodeApp",
-    "slug": "BarCodeApp",
+    "name": "LectorSmarth",
+    "slug": "LectorSmarth",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,7 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.rubikinteractive.lectorqr"
+      "package": "com.rubikinteractive.lectorsmarth"
     },
     "web": {
       "favicon": "./assets/favicon.png"

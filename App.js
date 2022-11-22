@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Linking, Alert, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 export default function App() {
@@ -28,20 +28,20 @@ export default function App() {
     console.log('Type: ' + type + '\nData: ' + data)
   };
 
-  const actualizarCodigo = async () => {
+  const abrirCodigo = async () => {
       try {
         let str = text;
+        let url = "https://malldelsol-gift.netlify.app/?codigo=";
         var valor = str.replace("https://malldelsol-landing.netlify.app/?codigo=", "");
         if(valor.length > 2 ){
           valor = str.replace("https://malldelsol-landing.netlify.app?codigo=", "");
         }
+        url = url + valor;
 
-          const response = await fetch(
-             "https://globaltec.ec/app_malldelsol/setactivo.php?clave=@RUBIK2022&codigo="+valor
-           );
-           const jsonResponse= await response.json();
-           setText("Código enviado con éxito");
-           setScanned(false);
+        openUrl(url);
+        setText("Código abierto con éxito");
+        setScanned(false);
+
       } catch (error) {
         console.log("un error cachado Data saldopedIENTEEE");
         console.log("ERROR CACHADO " + error);
@@ -63,6 +63,15 @@ export default function App() {
       </View>)
   }
 
+  async function openUrl(url){
+    const isSupported = await Linking.canOpenURL(url);
+        if(isSupported){
+            await Linking.openURL(url)
+        }else{
+            Alert.alert('No se encontro el Link');
+        }
+}
+
   // Return the View
   return (
     <View style={styles.container}>
@@ -73,7 +82,7 @@ export default function App() {
       </View>
       <Text style={styles.maintext}>{text}</Text>
 
-      {scanned && <Button title={'Enviar Codigo'} onPress={() => actualizarCodigo()} color='tomato' />}
+      {scanned && <Button title={'Abrir Código'} onPress={() => abrirCodigo()} color='tomato' />}
     </View>
   );
 }
