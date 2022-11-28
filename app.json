@@ -17,7 +17,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier":"com.rubikinteractive.lectorsmarth",
+      "supportsTablet": false
     },
     "android": {
       "adaptiveIcon": {
