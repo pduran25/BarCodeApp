@@ -24,7 +24,7 @@ export default function App() {
     setScanned(true);
     setText(data)
    // actualizarCodigo(data);
-
+    console.log('LectorStarth');
     console.log('Type: ' + type + '\nData: ' + data)
   };
 
