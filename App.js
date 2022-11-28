@@ -26,6 +26,7 @@ export default function App() {
    // actualizarCodigo(data);
 
     console.log('Type: ' + type + '\nData: ' + data)
+    console.log('Probando');
   };
 
   const abrirCodigo = async () => {
